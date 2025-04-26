@@ -11,7 +11,16 @@ dotenv.config();
 const app: Express = express();
 
 
-app.use(cors());
+
+// CORS configuration
+app.use(
+    cors({
+      origin: process.env.FRONTEND_URL || 'http://localhost:3000', // Allow frontend origin
+      methods: ['GET', 'POST', 'DELETE', 'OPTIONS'], // Allowed methods
+      allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
+    })
+  );
+  
 app.use(express.json());
 
 mongoose
