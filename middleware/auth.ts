@@ -16,7 +16,7 @@ export default function (roles: string[] = []) {
         id: string;
         role: string;
       };
-
+console.log('>>> decoded', decoded);
       req.user = decoded;
       if (roles.length && !roles.includes(req.user.role)) {
         return res.status(403).json({ msg: "Access denied" });
