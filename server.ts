@@ -16,7 +16,7 @@ const app: Express = express();
 // CORS configuration
 app.use(
     cors({
-      origin: 'http://localhost:3000', // Allow frontend origin
+      origin: process.env.FRONTEND_URL, // Allow frontend origin
       methods: ['GET', 'POST', 'DELETE', 'OPTIONS'], // Allowed methods
       allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
     })
@@ -32,7 +32,7 @@ mongoose
 app.use("/api/auth", authRoutes);
 app.use("/api/videos", videoRoutes);
 app.use("/api/comments", commentRoutes);
-app.use('/api/watchlater', watchLaterRoutes); 
+app.use('/api/watchater', watchLaterRoutes); 
 
 const PORT: number = parseInt(process.env.PORT as string, 10) || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
